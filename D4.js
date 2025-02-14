@@ -22,7 +22,9 @@ const crazySum = function (n1, n2) {
     return n1 + n2;
   }
 };
+
 console.log(crazySum(4, 6));
+console.log(crazySum(4, 4));
 
 /* ESERCIZIO 3
  Scrivi una funzione di nome "crazyDiff" che calcola la differenza assoluta tra un numero fornito come parametro e 19.
@@ -30,12 +32,15 @@ console.log(crazySum(4, 6));
 */
 
 const crazyDiff = function (y, x = 19) {
-  {
-    return Math.abs(x - y);
+  if (y > 19) {
+    return Math.abs(y - x) * 3;
+  } else {
+    return Math.abs(y - x);
   }
 };
 
 console.log(crazyDiff(8));
+console.log(crazyDiff(22));
 
 /* ESERCIZIO 4
  Scrivi una funzione di nome "boundary" che accetta un numero intero n come parametro, e ritorna true se n è compreso tra 20 e 100 (incluso) oppure
@@ -43,14 +48,15 @@ console.log(crazyDiff(8));
 */
 
 const boundary = function (n) {
-  if (n >= 20 && n <= 100 && n !== 400) {
-    console.log("Numero OK");
+  if ((n >= 20 && n <= 100) || n === 400) {
+    return "Numero OK";
   } else {
-    console.log("Numero non OK");
+    return "Numero non OK";
   }
 };
 
 console.log(boundary(98));
+console.log(boundary(328));
 
 /* ESERCIZIO 5
  Scrivi una funzione di nome "epify" che accetta una stringa come parametro.
@@ -58,7 +64,7 @@ console.log(boundary(98));
  ritornare la stringa originale senza alterarla.
 */
 
-const epify = function (stringa = " ") {
+const epify = function (stringa) {
   if (stringa.startsWith("EPICODE")) {
     return stringa;
   } else {
@@ -106,7 +112,7 @@ const upperFirst = function (w1, w2, w3) {
   return capitalize(w1) + " " + capitalize(w2) + " " + capitalize(w3);
 };
 
-console.log(upperFirst("ciao", "come", "va?"));
+console.log(upperFirst("ciao", "come", "va"));
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
@@ -123,7 +129,7 @@ console.log(cutString("Test"));
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
 
-const giveMeRandom = function (n) {
+let giveMeRandom = function (n) {
   let randomNumbers = [];
   for (let i = 0; i < n; i++) {
     randomNumbers.push(Math.floor(Math.random() * 11));
