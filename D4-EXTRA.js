@@ -103,32 +103,98 @@ console.log("Il tuo ultimo oggetto è " + latestShoppingCart(shoppingCart).name)
  La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero casuale non è maggiore di x per tre volte di fila.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+const loopUntil = function (num) {
+  if (num < 0 || num > 9) {
+    return console.log("Invalid number");
+  }
+  let randomNumber;
+  let counter = 0;
+  while (counter < 3) {
+    randomNumber = Math.floor(Math.random() * 11);
+    console.log(randomNumber);
+    if (randomNumber > num) {
+      counter++;
+    } else {
+      counter = 0;
+    }
+  }
+  return;
+};
+
+loopUntil(4);
 
 /* EXTRA 7
 Crea una funzione chiamata "average" che riceve un array come parametro e ne ritorna la media aritmetica. La funzione salta automaticamente i valori non numerici nell'array.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+const average = function (list) {
+  let count = 0;
+  let sumOfNumbers = 0;
+
+  for (let i = 0; i < list.length; i++) {
+    const element = list[i];
+    if (typeof element === "number") {
+      sumOfNumbers += element;
+      count++;
+    }
+  }
+  if (count === 0) {
+    return undefined;
+  }
+  return sumOfNumbers / count;
+};
+
+console.log("Avg:" + average([1, 23, "car", 45, "bingus"]));
 
 /* EXTRA 8
  Crea una funzione chiamata "longest" che trova la stringa più lunga all'interno di un array di stringhe fornito come parametro.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+const longest = function (listOfNames) {
+  let candidate = listOfNames[0];
+  for (let i = 1; i < listOfNames.length; i++) {
+    if (listOfNames[i].length > candidate.length) {
+      candidate = listOfNames[i];
+    }
+  }
+  return candidate;
+};
+
+console.log(longest(["Bingus", "THE MIMIC", "Mentina", "Miku"]));
 
 /* EXTRA 9
  Crea una funzione per creare un filtro anti-spam per la tua casella email. La funzione riceve un parametro stringa chiamato "emailContent", e torna un valore booleano.
  La funzione deve ritornare true se "emailContent" non contiene le parole "SPAM" o "SCAM".
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+const spamFilter = function (emailContent) {
+  if (emailContent.includes("SPAM") || emailContent.includes("SCAM")) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+console.log("Non spam: " + spamFilter("Ciao Monello tvb"));
+console.log(
+  "Spam: " + spamFilter("From: principe cubano assolutamente non SCAM")
+);
 
 /* EXTRA 10
  Scrivi una funzione che riceve una data come parametro, e calcola il numero di giorni passati da quella data.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+const numberOfDays = function (date) {
+  let dateMillis = date.getTime();
+  let nowMillis = new Date().getTime();
+  if (nowMillis < dateMillis) {
+    return null;
+  }
+  return (nowMillis - dateMillis) / (1000 * 60 * 60 * 24); // millisecondi * secondi * minuti * ore
+};
+
+console.log(numberOfDays(new Date("2/1/2025")));
+console.log(new Date("2/1/2025").toString());
 
 /* EXTRA 11
  Scrivi una funzione chiamata "matrixGenerator" che riceve come parametri due numeri interi, "x" e "y".
@@ -138,4 +204,14 @@ Crea una funzione chiamata "average" che riceve un array come parametro e ne rit
  "10","11","12"]
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+let result = [];
+for (let i = 0; i < y; i++) {
+  let row = [];
+  for (let j = 0; j < x; j++) {
+    row.push(i + "" + j);
+  }
+  result.push(row);
+}
+return result;
+
+// x è il numero di elementi nell'array, y è il numero di array dentro l'array principale
